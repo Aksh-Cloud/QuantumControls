@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Supabase JS Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Fixes the 404 favicon error -->
+    <link rel="icon" href="data:,">
 </head>
 <body class="bg-slate-900 text-white flex items-center justify-center min-h-screen p-4">
 
@@ -36,9 +38,11 @@
 
     <script>
         // 1. Fill in your Supabase project details
-        const SUPABASE_URL = 'https://cvcyqbowqzpprttieacg.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2Y3lxYm93cXpwcHJ0dGllYWNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4OTIxMzcsImV4cCI6MjEwNzQ2ODEzN30.S3ZsiuGhoBfN1oiiN79cSEb5VQsIKrS6GJg2CxjVJis';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const SUPABASE_URL = 'YOUR_SUPABASE_PROJECT_URL';
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+        
+        // Renamed to 'dbClient' to avoid identifier collision with global 'supabase'
+        const dbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         let falixApiKey = '';
         let falixServerId = '';
@@ -46,7 +50,7 @@
         // 2. Load API key and Server ID from Supabase
         async function loadConfigFromSupabase() {
             try {
-                const { data, error } = await supabase
+                const { data, error } = await dbClient
                     .from('server_config')
                     .select('falix_api_key, falix_server_id')
                     .limit(1)
