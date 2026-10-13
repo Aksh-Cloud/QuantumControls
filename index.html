@@ -38,8 +38,8 @@
 
     <script>
         // 1. Fill in your Supabase project details
-        const SUPABASE_URL = 'YOUR_SUPABASE_PROJECT_URL';
-        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+        const SUPABASE_URL = 'https://cvcyqbowqzpprttieacg.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2Y3lxYm93cXpwcHJ0dGllYWNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4OTIxMzcsImV4cCI6MjEwNzQ2ODEzN30.S3ZsiuGhoBfN1oiiN79cSEb5VQsIKrS6GJg2CxjVJis';
         
         // Renamed to 'dbClient' to avoid identifier collision with global 'supabase'
         const dbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
